@@ -1,6 +1,24 @@
 const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const common = require('./webpack.common.js');
+const { networkInterfaces } = require('os');
+
+const getLocalIpAddress = () => {
+  const nets = networkInterfaces();
+  const results = Object.create(null);
+
+  for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+      if (net.family === 'IPv4' && !net.internal) {
+        if (!results[name]) {
+          results[name] = [];
+        }
+        results[name].push(net.address);
+      }
+    }
+  }
+  return results['en0'][0];
+};
 
 module.exports = env => {
   return merge(common(env), {
@@ -14,7 +32,8 @@ module.exports = env => {
     devServer: {
       compress: true,
       hot: true,
-      disableHostCheck: true,
+      host: getLocalIpAddress(),
+      disableHostCheck: false,
       port: 8081,
       open: true,
     },
