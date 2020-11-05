@@ -34,7 +34,7 @@ module.exports = env => {
       hot: true,
       host: getLocalIpAddress(),
       disableHostCheck: false,
-      port: 8081,
+      port: 8090,
       open: true,
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],

@@ -11,7 +11,6 @@ const webpack = require('webpack');
 const generateScopedName = require('./generateScopedName');
 
 const srcPath = path.join(__dirname, './src');
-const packageName = require('./package.json').name;
 
 // 匹配svg
 const svgRegex = /\.svg(\?v=\d+\.\d+\.\d+)?$/;
@@ -32,9 +31,6 @@ module.exports = env => {
   return {
     entry: {
       app: path.join(srcPath, './index.tsx'), // 入口文件
-    },
-    output: {
-      // jsonpFunction: `webpackJsonp_${packageName}`,
     },
     module: {
       noParse: /jquery/,
@@ -131,13 +127,14 @@ module.exports = env => {
       new CleanWebpackPlugin(),
       new CaseSensitivePathsPlugin(),
       new WebpackBar({
-        name: '赤兔掌柜',
+        name: '拼多多搬家',
         color: '#2f54eb',
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: './template.html',
+        favicon: path.join(srcPath, './assets/favicon/favicon.ico'),
         ...(isEnvProduction
           ? {
               minify: {
