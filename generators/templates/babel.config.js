@@ -44,7 +44,7 @@ module.exports = {
     [
       'import',
       {
-        libraryName: 'antd',
+        libraryName: 'antd-mobile',
         libraryDirectory: 'es',
         style: 'css',
       },

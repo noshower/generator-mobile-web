@@ -20,7 +20,8 @@
       "util/*": ["src/util/*"],
       "service/*": ["src/service/*"],
       "components/*": ["src/components/*"],
-      "pages/*": ["src/pages/*"]
+      "pages/*": ["src/pages/*"],
+      "dtos/*": ["src/dtos/*"]
     },
     "experimentalDecorators": true
   },

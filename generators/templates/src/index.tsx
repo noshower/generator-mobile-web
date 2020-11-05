@@ -1,6 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
+import fastclick from 'fastclick';
 
-import Home from 'pages/home';
+import App from './app';
 
-render(<Home />, document.getElementById('root'));
+if ('addEventListener' in document) {
+  document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+      fastclick.attach(document.body);
+    },
+    false,
+  );
+}
+
+render(<App />, document.getElementById('root'));
