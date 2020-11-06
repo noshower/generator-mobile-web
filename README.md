@@ -7,3 +7,19 @@
 [![GitHub forks](https://img.shields.io/github/forks/noshower/generator-mobile-web.svg)](https://github.com/noshower/generator-mobile-web/network/members)
 [![NPM downloads](https://img.shields.io/npm/dm/generator-mobile-web.svg?style=flat-square)](https://www.npmjs.com/package/generator-mobile-web)
 [![GitHub issues](https://img.shields.io/github/issues/noshower/generator-mobile-web.svg)](https://github.com/noshower/generator-mobile-web/issues)
+
+# 安装
+
+```js
+// 新建项目目录
+mkdir my-new-project && cd my-new-project
+
+// 运行命令
+npm init yo mobile-web
+```
+
+# 启动应用
+
+```js
+npm start
+```

@@ -1,24 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Button, InputItem } from 'antd-mobile';
-import { useHistory } from 'react-router-dom';
-import { HomeContext } from 'stores/home/provider';
 import css from './index.less';
 import UserInfo from './components/userInfo';
+import useHome from './useHome';
 
 const Home: React.FC = () => {
-  const history = useHistory();
-
-  const [state, dispatch] = useContext(HomeContext);
+  const { state, methods } = useHome();
   const { userInfo } = state;
   const { nick } = userInfo;
-
-  const onClick = () => {
-    history.push('/itemList');
-  };
-
-  const onChange = (value: string) => {
-    dispatch({ type: 'changeNick', payload: value });
-  };
+  const { onChange, onClick } = methods;
 
   return (
     <div className={css.container}>

@@ -1,34 +1,12 @@
-import React, { useContext } from 'react';
-import { Button, InputItem, Toast, List, Icon } from 'antd-mobile';
-import { confirm } from 'components/modal';
-
-import { ProgramListContext } from 'stores/programList/provider';
-import _ from 'lodash-es';
+import React from 'react';
+import { Button, InputItem, List, Icon } from 'antd-mobile';
 import css from './index.less';
+import useProgramList from './useProgramList';
 
 const ProgramList: React.FC = () => {
-  const [state, dispatch] = useContext(ProgramListContext);
-  const { list, inputValue } = state;
-
-  const onChange = (value: string) => {
-    dispatch({ type: 'changeInputValue', payload: value });
-  };
-
-  const addProgram = () => {
-    if (_.isEmpty(_.trim(inputValue))) {
-      Toast.fail('请输入节目名称');
-    }
-    const id = (_.last(list) || { id: 0 }).id + 1;
-    dispatch({ type: 'add', payload: { id, name: inputValue } });
-  };
-
-  const delProgram = async (id: number) => {
-    const isOk = await confirm({ title: '温馨提示', message: '确认删除？' });
-    if (isOk) {
-      dispatch({ type: 'delete', payload: id });
-    }
-  };
-
+  const { state, methods } = useProgramList();
+  const { inputValue, list } = state;
+  const { onChange, addProgram, delProgram } = methods;
   return (
     <div>
       <div className={css.formItem}>

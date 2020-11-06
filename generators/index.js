@@ -6,6 +6,8 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(this.templatePath('tests'), this.destinationPath('test'));
 
+    this.fs.copyTpl(this.templatePath('.commitlintrc.js'), this.destinationPath('.commitlintrc.js'));
+
     this.fs.copyTpl(this.templatePath('.eslintignore'), this.destinationPath('.eslintignore'));
 
     this.fs.copyTpl(this.templatePath('.eslintrc.js'), this.destinationPath('.eslintrc.js'));

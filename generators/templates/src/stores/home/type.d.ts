@@ -18,4 +18,4 @@ export type Action =
       payload: string;
     };
 
-export type Context = [HomeModel, React.Dispatch<Action>];
+export type Context = [HomeStore, React.Dispatch<Action>];
