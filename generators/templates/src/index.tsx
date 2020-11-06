@@ -1,17 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import fastclick from 'fastclick';
-
+import { Toast } from 'antd-mobile';
 import App from './app';
 
-if ('addEventListener' in document) {
-  document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-      fastclick.attach(document.body);
-    },
-    false,
-  );
-}
+document.addEventListener('DOMContentLoaded', () => {
+  fastclick.attach(document.body);
+});
+
+Toast.config({ duration: 1500 });
 
 render(<App />, document.getElementById('root'));

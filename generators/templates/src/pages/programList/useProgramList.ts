@@ -25,6 +25,7 @@ export default (): ReturnType => {
   const addProgram = () => {
     if (_.isEmpty(_.trim(inputValue))) {
       Toast.fail('请输入节目名称');
+      return;
     }
     const id = (_.last(list) || { id: 0 }).id + 1;
     dispatch({ type: 'add', payload: { id, name: inputValue } });
