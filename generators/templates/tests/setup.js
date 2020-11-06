@@ -4,7 +4,7 @@ import handlers from './handlers';
 
 import('@testing-library/jest-dom/extend-expect');
 
-jest.unmock('axios');
+jest.unmock('reqwest');
 
 const upServer = setupServer(...handlers);
 

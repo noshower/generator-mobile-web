@@ -17,11 +17,13 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "util/*": ["src/util/*"],
+      "utils/*": ["src/utils/*"],
       "service/*": ["src/service/*"],
       "components/*": ["src/components/*"],
       "pages/*": ["src/pages/*"],
-      "dtos/*": ["src/dtos/*"]
+      "dtos/*": ["src/api/dtos/*"],
+      "types/*": ["src/types/*"],
+      "stores/*": ["src/stores/*"]
     },
     "experimentalDecorators": true
   },

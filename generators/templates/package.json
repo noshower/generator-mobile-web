@@ -47,13 +47,15 @@
     "antd": "^4.8.0",
     "antd-mobile": "^2.3.4",
     "fastclick": "^1.0.6",
+    "immer": "^7.0.14",
     "lodash-es": "^4.17.15",
     "qs": "^6.9.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.4.1",
-    "reqwest": "^2.0.5"
+    "reqwest": "^2.0.5",
+    "use-immer": "^0.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

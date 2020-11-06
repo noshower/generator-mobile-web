@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/no-var-requires:0 */
 const { jsWithTs: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {

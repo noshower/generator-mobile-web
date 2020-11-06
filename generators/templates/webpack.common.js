@@ -106,7 +106,7 @@ module.exports = env => {
     },
     resolve: {
       modules: ['node_modules', path.resolve(__dirname, 'src')],
-      extensions: ['.js', '.jsx', '.json', '.tsx', '.ts'],
+      extensions: ['.js', '.jsx', '.json', '.tsx', '.ts', '.d.ts'],
       plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
     },
     optimization: {

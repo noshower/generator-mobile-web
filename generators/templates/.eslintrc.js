@@ -31,6 +31,7 @@ module.exports = {
   parserOptions: { ecmaVersion: 2020, sourceType: 'module', ecmaFeatures: { impliedStrict: true, jsx: false } },
   globals: {},
   rules: {
+    'consistent-return': 0,
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft'] }],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts', '.less'] }],
     'react/jsx-props-no-spreading': 0,
