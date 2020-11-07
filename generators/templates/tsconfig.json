@@ -20,8 +20,8 @@
       "service/*": ["src/service/*"],
       "components/*": ["src/components/*"],
       "pages/*": ["src/pages/*"],
-      "dtos/*": ["src/api/dtos/*"],
       "types/*": ["src/types/*"],
+      "api/*": ["src/api/*"],
       "stores/*": ["src/stores/*"]
     },
     "experimentalDecorators": true

@@ -1,11 +1,9 @@
-import { HomeContext } from 'stores/home/provider';
-import React, { useContext } from 'react';
+import React from 'react';
 import css from './index.less';
+import { Props } from './type';
 
-const UserInfo: React.FC = () => {
-  const [state] = useContext(HomeContext);
-  const { userInfo } = state;
-  const { picture, nick, desc } = userInfo;
+const UserInfo: React.FC<Props> = ({ user }) => {
+  const { picture, nick, desc } = user;
 
   return (
     <div className={css.container}>

@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, InputItem, List, Icon } from 'antd-mobile';
+import { getProgramList } from 'api/userApi';
 import css from './index.less';
-import useProgramList from './useProgramList';
+import { useModel } from './useModel';
 
 const ProgramList: React.FC = () => {
-  const { state, methods } = useProgramList();
-  const { inputValue, list } = state;
-  const { onChange, addProgram, delProgram } = methods;
+  const { state, methods } = useModel();
+  const { inputValue, programList } = state;
+  const { updateProgramList, changeInputValue, addProgram, delProgram } = methods;
+
+  useEffect(() => {
+    getProgramList().then(data => {
+      updateProgramList(data);
+    });
+  }, [updateProgramList]);
+
   return (
     <div>
       <div className={css.formItem}>
-        <InputItem value={inputValue} onChange={onChange} className={css.input} placeholder="请输入王鸥参加过的综艺" />
+        <InputItem value={inputValue} onChange={changeInputValue} className={css.input} placeholder="请输入王鸥参加过的综艺" />
         <Button onClick={addProgram} className={css.addBtn} size="small" type="primary">
           添加
         </Button>
       </div>
       <List>
-        {list.map(({ id, name }) => {
+        {programList.map(({ id, name }) => {
           return (
             <List.Item key={id}>
               <div className={css.item}>
