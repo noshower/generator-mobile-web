@@ -1,22 +1,15 @@
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import CacheRoute, { CacheSwitch } from 'react-router-cache-route';
-import Detail from './pages/detail';
-import Home from './pages/home';
-import ProgramList from './pages/programList';
+import { routes } from './routeConfig';
+import css from './app.less';
 
 const Routes: React.FC = () => {
   return (
     <CacheSwitch>
-      <CacheRoute exact path="/">
-        <Home />
-      </CacheRoute>
-      <CacheRoute exact path="/program-list">
-        <ProgramList />
-      </CacheRoute>
-      <CacheRoute exact path="/detail">
-        <Detail />
-      </CacheRoute>
+      {routes.map(config => {
+        return <CacheRoute {...config} className={css.page} />;
+      })}
     </CacheSwitch>
   );
 };
