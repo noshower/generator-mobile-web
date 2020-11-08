@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, InputItem } from 'antd-mobile';
 import { useHistory } from 'react-router-dom';
-import { getUser } from 'api/userApi';
+import { getUser } from 'api/demoApi';
 import css from './index.less';
 import UserInfo from './components/userInfo';
 import { useModel } from './useModel';

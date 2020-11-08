@@ -3,8 +3,3 @@ export type UserDto = {
   nick: string;
   desc: string;
 };
-
-export type ProgramDto = {
-  id: number;
-  name: string;
-};

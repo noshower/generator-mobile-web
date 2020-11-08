@@ -1,4 +1,4 @@
-import { ProgramDto } from 'api/dtos/userDto';
+import { ProgramDto } from 'api/dtos/programDto';
 import { useCallback, useState } from 'react';
 import { UseModel } from 'types/useModel';
 import { useImmer } from 'use-immer';
@@ -23,7 +23,7 @@ export const useModel: UseModel<State, Methods> = () => {
 
   const addProgram = () => {
     if (_.isEmpty(_.trim(inputValue))) {
-      Toast.fail('请输入节目名称');
+      return Toast.fail('请输入节目名称');
     }
 
     const id = (_.last(programList) || { id: 0 }).id + 1;

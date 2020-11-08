@@ -1,35 +1,23 @@
 import React from 'react';
-import { HashRouter, Route, Switch, useHistory, useLocation } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import css from './app.less';
+import { HashRouter } from 'react-router-dom';
+import CacheRoute, { CacheSwitch } from 'react-router-cache-route';
+import Detail from './pages/detail';
 import Home from './pages/home';
 import ProgramList from './pages/programList';
 
-const ANIMATION_MAP = {
-  PUSH: 'forward',
-  POP: 'back',
-  REPLACE: '',
-};
-
 const Routes: React.FC = () => {
-  const location = useLocation();
-  const history = useHistory();
-
   return (
-    <TransitionGroup childFactory={child => React.cloneElement(child, { classNames: ANIMATION_MAP[history.action] })}>
-      <CSSTransition key={location.pathname} timeout={500}>
-        <div className={css.page}>
-          <Switch location={location}>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/program-list">
-              <ProgramList />
-            </Route>
-          </Switch>
-        </div>
-      </CSSTransition>
-    </TransitionGroup>
+    <CacheSwitch>
+      <CacheRoute exact path="/">
+        <Home />
+      </CacheRoute>
+      <CacheRoute exact path="/program-list">
+        <ProgramList />
+      </CacheRoute>
+      <CacheRoute exact path="/detail">
+        <Detail />
+      </CacheRoute>
+    </CacheSwitch>
   );
 };
 

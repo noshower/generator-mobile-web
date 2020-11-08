@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fastclick.attach(document.body);
 });
 
-Toast.config({ duration: 1500 });
+Toast.config({ duration: 1.5 });
 
 render(<App />, document.getElementById('root'));
