@@ -7,7 +7,7 @@ export type State = {
 
 export type Methods = {
   changeInputValue(value: string): void;
-  updateProgramList(value: ProgramDto[]): void;
+  fetchData(): void;
   addProgram(): void;
   delProgram(id: number): void;
 };

@@ -16,13 +16,16 @@
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
-      "utils/*": ["src/utils/*"],
-      "service/*": ["src/service/*"],
-      "components/*": ["src/components/*"],
-      "pages/*": ["src/pages/*"],
-      "types/*": ["src/types/*"],
       "api/*": ["src/api/*"],
-      "stores/*": ["src/stores/*"]
+      "assets/*": ["src/assets/*"],
+      "components/*": ["src/components/*"],
+      "constants/*": ["src/constants/*"],
+      "hooks/*": ["src/hooks/*"],
+      "pages/*": ["src/pages/*"],
+      "services/*": ["src/services/*"],
+      "types/*": ["src/types/*"],
+      "utils/*": ["src/utils/*"],
+      "widgets/*": ["src/widgets/*"]
     },
     "experimentalDecorators": true
   },

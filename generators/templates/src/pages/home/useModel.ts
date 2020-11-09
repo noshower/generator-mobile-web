@@ -18,11 +18,10 @@ export const useModel: UseModel<State, Methods> = () => {
     });
   };
 
-  const fetchData = useCallback(() => {
-    getUser().then(data => {
-      setUserInfo(() => {
-        return data;
-      });
+  const fetchData = useCallback(async () => {
+    const data = await getUser();
+    setUserInfo(() => {
+      return data;
     });
   }, [setUserInfo]);
 

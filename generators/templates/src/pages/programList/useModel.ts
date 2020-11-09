@@ -4,6 +4,7 @@ import { UseModel } from 'types/useModel';
 import { useImmer } from 'use-immer';
 import _ from 'lodash-es';
 import { Toast } from 'antd-mobile';
+import { getProgramList } from 'api/demoApi';
 import { State, Methods } from './type';
 
 export const useModel: UseModel<State, Methods> = () => {
@@ -14,12 +15,10 @@ export const useModel: UseModel<State, Methods> = () => {
     setInputValue(value);
   };
 
-  const updateProgramList = useCallback(
-    (value: ProgramDto[]) => {
-      setProgramList(() => value);
-    },
-    [setProgramList],
-  );
+  const fetchData = useCallback(async () => {
+    const data = await getProgramList();
+    setProgramList(() => data);
+  }, [setProgramList]);
 
   const addProgram = () => {
     if (_.isEmpty(_.trim(inputValue))) {
@@ -46,7 +45,7 @@ export const useModel: UseModel<State, Methods> = () => {
     },
     methods: {
       changeInputValue,
-      updateProgramList,
+      fetchData,
       addProgram,
       delProgram,
     },

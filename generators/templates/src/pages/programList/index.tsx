@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Button, InputItem, Icon } from 'antd-mobile';
-import { getProgramList } from 'api/demoApi';
+import { Button, InputItem } from 'antd-mobile';
 import { useHistory } from 'react-router-dom';
+import { Icon } from 'widgets/index';
 import css from './index.less';
 import { useModel } from './useModel';
 
@@ -9,13 +9,11 @@ const ProgramList: React.FC = () => {
   const history = useHistory();
   const { state, methods } = useModel();
   const { inputValue, programList } = state;
-  const { updateProgramList, changeInputValue, addProgram, delProgram } = methods;
+  const { fetchData, changeInputValue, addProgram, delProgram } = methods;
 
   useEffect(() => {
-    getProgramList().then(data => {
-      updateProgramList(data);
-    });
-  }, [updateProgramList]);
+    fetchData();
+  }, [fetchData]);
 
   const goto = () => {
     history.push('/detail');
@@ -31,12 +29,12 @@ const ProgramList: React.FC = () => {
       </div>
       {programList.map(({ id, name }) => {
         return (
-          <div key={id} className={css.item} onClick={goto}>
-            <div className={css.content}>
+          <div key={id} className={css.item}>
+            <div className={css.content} onClick={goto}>
               <span className={css.order}>{id}.</span>
               {name}
             </div>
-            <Icon type="cross-circle" onClick={() => delProgram(id)} />
+            <Icon type="quxiao" onClick={() => delProgram(id)} />
           </div>
         );
       })}
