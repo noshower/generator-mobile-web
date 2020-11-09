@@ -1,3 +1,4 @@
+import { getUser } from 'api/demoApi';
 import { UserDto } from 'api/dtos/userDto';
 import { useCallback } from 'react';
 import { UseModel } from 'types/useModel';
@@ -17,12 +18,13 @@ export const useModel: UseModel<State, Methods> = () => {
     });
   };
 
-  const updateUserInfo = useCallback(
-    (value: UserDto) => {
-      setUserInfo(() => value);
-    },
-    [setUserInfo],
-  );
+  const fetchData = useCallback(() => {
+    getUser().then(data => {
+      setUserInfo(() => {
+        return data;
+      });
+    });
+  }, [setUserInfo]);
 
   return {
     state: {
@@ -30,7 +32,7 @@ export const useModel: UseModel<State, Methods> = () => {
     },
     methods: {
       changeNick,
-      updateUserInfo,
+      fetchData,
     },
   };
 };

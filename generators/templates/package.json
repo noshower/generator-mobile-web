@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js --env development",
-    "build": "./node_modules/.bin/webpack  --config webpack.prod.js --env.production",
+    "build": "./node_modules/.bin/webpack  --config webpack.prod.js --env production",
     "pretty-quick": "pretty-quick",
     "lint-less": "stylelint 'src/**/*.less' --fix",
     "lint:style": "stylelint 'src/**/*.less' --syntax less",
@@ -13,13 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $GIT_PARAMS"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -43,7 +37,6 @@
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
-    "antd": "^4.8.0",
     "antd-mobile": "^2.3.4",
     "fastclick": "^1.0.6",
     "immer": "^7.0.14",
@@ -67,8 +60,6 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.12.1",
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
     "@testing-library/react-hooks": "^3.4.2",

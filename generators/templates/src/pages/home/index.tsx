@@ -1,23 +1,20 @@
 import React, { useEffect } from 'react';
 import { Button, InputItem } from 'antd-mobile';
 import { useHistory } from 'react-router-dom';
-import { getUser } from 'api/demoApi';
 import css from './index.less';
 import UserInfo from './components/userInfo';
 import { useModel } from './useModel';
 
 const Home: React.FC = () => {
-  const { state, methods } = useModel();
   const history = useHistory();
+  const { state, methods } = useModel();
   const { user } = state;
   const { nick } = user;
-  const { changeNick, updateUserInfo } = methods;
+  const { changeNick, fetchData } = methods;
 
   useEffect(() => {
-    getUser().then(data => {
-      updateUserInfo(data);
-    });
-  }, [updateUserInfo]);
+    fetchData();
+  }, [fetchData]);
 
   const goto = () => {
     history.push('/program-list');

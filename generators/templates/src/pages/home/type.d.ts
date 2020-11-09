@@ -6,5 +6,5 @@ export type State = {
 
 export type Methods = {
   changeNick(value: string): void;
-  updateUserInfo(value: UserInfo): void;
+  fetchData(): void;
 };
