@@ -23,3 +23,5 @@ npm init yo mobile-web
 ```js
 npm start
 ```
+
+详情：https://www.yuque.com/docs/share/d9b1f730-0837-432e-8a06-32f1a7e66b00?# 《generator-mobile-web 脚手架》
