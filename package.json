@@ -1,6 +1,6 @@
 {
   "name": "generator-mobile-web",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "移动端h5应用脚手架",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,16 @@
   "keywords": [
     "yeoman-generator"
   ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
   "author": "noshower",
   "license": "MIT",
   "repository": {
@@ -24,5 +34,11 @@
   "homepage": "https://github.com/noshower/generator-mobile-web#readme",
   "dependencies": {
     "yeoman-generator": "^4.8.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "^3.3.0"
   }
 }
