@@ -14,8 +14,7 @@
 // 新建项目目录
 mkdir my-new-project && cd my-new-project
 
-// 运行命令 appname 是占位符，改成你应用的名称，可选
-npm init yo mobile-web appname
+npm init yo mobile-web
 ```
 
 # 启动应用

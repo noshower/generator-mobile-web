@@ -3,19 +3,31 @@ var Generator = require('yeoman-generator');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-
-    this.argument('appname', { type: String, required: false });
-
-    this.log(args);
   }
+
+  async prompting() {
+    this.answers = await this.prompt([
+      { type: 'input', name: 'appName', message: '请输入应用名称', default: this.appname },
+      { type: 'list', name: 'installType', message: '请选择安装依赖的方式', default: 'npm', choices: ['npm', 'yarn'] },
+    ]);
+  }
+
   writing() {
     this.fs.copyTpl(this.templatePath(), this.destinationPath());
     this.deleteDestination('/package-lock.json');
     this.fs.extendJSON(this.destinationPath('package.json'), {
-      name: this.options.appname || this.appname,
+      name: this.options.appName || this.appname,
     });
   }
   install() {
-    this.npmInstall();
+    if (this.answers.installType === 'npm') {
+      this.npmInstall();
+    } else {
+      this.yarnInstall();
+    }
+  }
+  end() {
+    const command = this.answers.installType === 'npm' ? 'npm start' : 'yarn start';
+    this.log(`安装完毕，你可以使用 ${command} 启动应用程序`);
   }
 };
