@@ -7,11 +7,6 @@ const destroyFns: Array<() => void> = [];
 
 type Config = ModalProps & { afterClose?: () => void };
 
-type Return = {
-  destroy: () => void;
-  update: (newConfig: Config) => void;
-};
-
 export const destroyAll = (): void => {
   while (destroyFns.length) {
     const close = destroyFns.pop();
@@ -28,7 +23,7 @@ const defaultProps: Partial<Config> = {
 
 /* eslint @typescript-eslint/no-use-before-define: 0 */
 
-export default function modal(config: Omit<Config, 'visible'>, component: React.ReactNode): Promise<Return> {
+export default function modal(config: Omit<Config, 'visible'>, component: React.ReactNode): Promise<void> {
   return new Promise(resolve => {
     const div = document.createElement('div');
     document.body.appendChild(div);
@@ -65,21 +60,7 @@ export default function modal(config: Omit<Config, 'visible'>, component: React.
       render(currentConfig);
     }
 
-    function update(newConfig: ModalProps) {
-      currentConfig = {
-        ...currentConfig,
-        ...newConfig,
-      };
-      render(currentConfig);
-    }
-
     render(currentConfig);
-
     destroyFns.push(close);
-
-    return {
-      destroy: close,
-      update,
-    };
   });
 }

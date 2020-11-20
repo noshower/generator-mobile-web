@@ -6,24 +6,11 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-
+const ESLintPlugin = require('eslint-webpack-plugin');
 const webpack = require('webpack');
 const generateScopedName = require('./generateScopedName');
 
 const srcPath = path.join(__dirname, './src');
-
-// 匹配svg
-const svgRegex = /\.svg(\?v=\d+\.\d+\.\d+)?$/;
-const svgOptions = {
-  limit: 10000,
-  minetype: 'image/svg+xml',
-};
-
-// 匹配图片
-const imageRegex = /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i;
-const imageOptions = {
-  limit: 10000,
-};
 
 module.exports = env => {
   const isEnvProduction = env.production;
@@ -35,17 +22,17 @@ module.exports = env => {
     module: {
       noParse: /jquery/,
       rules: [
-        { parser: { requireEnsure: false } },
-        {
-          test: /\.(ts|tsx)$/,
-          enforce: 'pre',
-          include: srcPath,
-          loader: 'eslint-loader',
-          options: {
-            cache: true,
-            emitWarning: true,
-          },
-        },
+        { parser: { requireEnsure: false }, test: /\.(ts|tsx)$/ },
+        // {
+        //   test: /\.(ts|tsx)$/,
+        //   enforce: 'pre',
+        //   include: srcPath,
+        //   loader: 'eslint-loader',
+        //   options: {
+        //     cache: true,
+        //     emitWarning: true,
+        //   },
+        // },
         {
           test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
@@ -93,14 +80,13 @@ module.exports = env => {
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: svgRegex,
-          loader: 'url-loader',
-          options: svgOptions,
-        },
-        {
-          test: imageRegex,
-          loader: 'url-loader',
-          options: imageOptions,
+          test: /\.(png|jpg|jpeg|gif|svg)/i,
+          type: 'asset',
+          parser: {
+            dataUrlCondition: {
+              maxSize: 8 * 1024,
+            },
+          },
         },
       ],
     },
@@ -129,6 +115,11 @@ module.exports = env => {
       new WebpackBar({
         name: '拼多多搬家',
         color: '#2f54eb',
+      }),
+      new ESLintPlugin({
+        extensions: ['.ts', '.tsx'],
+        emitWarning: true,
+        lintDirtyModulesOnly: true,
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new HtmlWebpackPlugin({

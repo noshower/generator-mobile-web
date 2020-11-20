@@ -1,9 +1,10 @@
+import wangou from 'assets/avatar/wangou.jpg';
 import { UserDto } from './dtos/userDto';
 import { ProgramDto } from './dtos/programDto';
 
 export const getUser = (): Promise<UserDto> => {
   return Promise.resolve({
-    picture: 'https://noshower.oss-cn-shanghai.aliyuncs.com/imgs/wangou.jpg',
+    picture: wangou,
     nick: '王鸥',
     desc: '王鸥 ( Angel wang )，1982年10月28日出生于广西壮族自治区南宁市，中国内地女演员。',
   });
