@@ -23,16 +23,6 @@ module.exports = env => {
       noParse: /jquery/,
       rules: [
         { parser: { requireEnsure: false }, test: /\.(ts|tsx)$/ },
-        // {
-        //   test: /\.(ts|tsx)$/,
-        //   enforce: 'pre',
-        //   include: srcPath,
-        //   loader: 'eslint-loader',
-        //   options: {
-        //     cache: true,
-        //     emitWarning: true,
-        //   },
-        // },
         {
           test: /\.(ts|tsx)$/,
           exclude: /node_modules/,

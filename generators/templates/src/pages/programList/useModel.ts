@@ -33,9 +33,7 @@ export const useModel: UseModel<State, Methods> = () => {
   };
 
   const delProgram = (id: number) => {
-    setProgramList(draft => {
-      return _.reject(draft, { id });
-    });
+    setProgramList(draft => _.reject(draft, { id }));
   };
 
   return {

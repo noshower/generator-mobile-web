@@ -2,16 +2,15 @@ import wangou from 'assets/avatar/wangou.jpg';
 import { UserDto } from './dtos/userDto';
 import { ProgramDto } from './dtos/programDto';
 
-export const getUser = (): Promise<UserDto> => {
-  return Promise.resolve({
+export const getUser = (): Promise<UserDto> =>
+  Promise.resolve({
     picture: wangou,
     nick: '王鸥',
     desc: '王鸥 ( Angel wang )，1982年10月28日出生于广西壮族自治区南宁市，中国内地女演员。',
   });
-};
 
-export const getProgramList = (): Promise<ProgramDto[]> => {
-  return Promise.resolve([
+export const getProgramList = (): Promise<ProgramDto[]> =>
+  Promise.resolve([
     { id: 1, name: 'CCTV-3《TOP荣耀时刻》' },
     { id: 2, name: '湖南卫视-巧手神探' },
     { id: 3, name: '湖南卫视我家那闺女2' },
@@ -47,4 +46,3 @@ export const getProgramList = (): Promise<ProgramDto[]> => {
     { id: 33, name: '芒果TV明星大侦探第一季' },
     { id: 34, name: '芒果TV明星大侦探第二季' },
   ]);
-};
