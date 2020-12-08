@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -100,7 +99,6 @@ module.exports = env => {
       },
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new CaseSensitivePathsPlugin(),
       new WebpackBar({
         name: '拼多多搬家',
