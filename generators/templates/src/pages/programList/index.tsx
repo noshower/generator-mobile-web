@@ -1,11 +1,11 @@
-import { useEffect, FC } from 'react';
+import React, { useEffect } from 'react';
 import { Button, InputItem } from 'antd-mobile';
 import { useHistory } from 'react-router-dom';
 import { Icon } from 'widgets/index';
 import css from './index.less';
 import { useModel } from './useModel';
 
-const ProgramList: FC = () => {
+const ProgramList: React.FC = () => {
   const history = useHistory();
   const { state, methods } = useModel();
   const { inputValue, programList } = state;
@@ -29,10 +29,10 @@ const ProgramList: FC = () => {
       </div>
       {programList.map(({ id, name }) => (
         <div key={id} className={css.item}>
-          <div className={css.content} onClick={goto}>
-            <span className={css.order}>{id}.</span>
+          <button type="button" className={css.content} onClick={goto}>
+            <span className={css.order}> {id}. </span>
             {name}
-          </div>
+          </button>
           <Icon type="quxiao" onClick={() => delProgram(id)} />
         </div>
       ))}

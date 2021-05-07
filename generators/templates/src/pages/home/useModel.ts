@@ -13,14 +13,16 @@ export const useModel: UseModel<State, Methods> = () => {
   });
 
   const changeNick = (value: string) => {
-    setUserInfo(draft => {
+    setUserInfo((draft) => {
       draft.nick = value;
     });
   };
 
   const fetchData = useCallback(async () => {
     const data = await getUser();
-    setUserInfo(() => data);
+    setUserInfo(() => {
+      return data;
+    });
   }, [setUserInfo]);
 
   return {

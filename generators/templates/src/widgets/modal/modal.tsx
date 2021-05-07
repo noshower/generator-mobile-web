@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React from 'react';
 import { Modal } from 'antd-mobile';
 import { ModalProps } from 'antd-mobile/lib/modal/Modal';
 import ReactDOM from 'react-dom';
@@ -23,7 +23,7 @@ const defaultProps: Partial<Config> = {
 
 /* eslint @typescript-eslint/no-use-before-define: 0 */
 
-export default function modal(config: Omit<Config, 'visible'>, component: ReactNode): Promise<void> {
+export default function modal(config: Omit<Config, 'visible'>, component: React.ReactNode): Promise<void> {
   return new Promise(resolve => {
     const div = document.createElement('div');
     document.body.appendChild(div);

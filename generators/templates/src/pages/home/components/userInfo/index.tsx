@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import React from 'react';
 import css from './index.less';
 import { Props } from './type';
 
-const UserInfo: FC<Props> = ({ user }) => {
+const UserInfo: React.FC<Props> = ({ user }) => {
   const { picture, nick, desc } = user;
 
   return (

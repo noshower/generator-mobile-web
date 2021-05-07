@@ -22,18 +22,18 @@ export const useModel: UseModel<State, Methods> = () => {
 
   const addProgram = () => {
     if (_.isEmpty(_.trim(inputValue))) {
-      return Toast.fail('请输入节目名称');
+      Toast.fail('请输入节目名称');
     }
 
     const id = (_.last(programList) || { id: 0 }).id + 1;
-    setProgramList(draft => {
+    setProgramList((draft) => {
       draft.push({ id, name: inputValue });
     });
     setInputValue('');
   };
 
   const delProgram = (id: number) => {
-    setProgramList(draft => _.reject(draft, { id }));
+    setProgramList((draft) => _.reject(draft, { id }));
   };
 
   return {

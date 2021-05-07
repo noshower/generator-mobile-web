@@ -1,11 +1,11 @@
-import { useEffect, FC } from 'react';
+import React, { useEffect } from 'react';
 import { Button, InputItem } from 'antd-mobile';
 import { useHistory } from 'react-router-dom';
 import css from './index.less';
 import UserInfo from './components/userInfo';
 import { useModel } from './useModel';
 
-const Home: FC = () => {
+const Home: React.FC = () => {
   const history = useHistory();
   const { state, methods } = useModel();
   const { user } = state;

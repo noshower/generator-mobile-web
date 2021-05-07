@@ -1,9 +1,9 @@
 import { Button } from 'antd-mobile';
-import { FC } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import css from './index.less';
 
-const Detail: FC = () => {
+const Detail: React.FC = () => {
   const history = useHistory();
 
   return (
