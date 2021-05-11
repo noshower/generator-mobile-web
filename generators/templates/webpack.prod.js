@@ -6,7 +6,9 @@ const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = env => {
+module.exports = (env) => {
+  process.env.BABEL_ENV = 'production';
+  process.env.NODE_ENV = 'production';
   return merge(common(env), {
     mode: 'production',
     output: {
